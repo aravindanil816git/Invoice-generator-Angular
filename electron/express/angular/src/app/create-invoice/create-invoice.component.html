@@ -1,0 +1,254 @@
+<div class="col-md-12">
+    <div class="card card-user">
+      <div class="row">
+        <div class="card-header col-md-7">
+          <h5 class="card-title col-md-8">Customer Info</h5>
+        </div>
+        <div class="col-md-2 text-danger font-weight-bold" style= "padding-top: 3%;">
+          <span style="border: 1px solid;padding: 10%;">DRAFT</span>
+        </div>
+        <div class="col-md-3" style= "padding-top: 2%;" >
+          <input type="date" class="form-control" id="draftdate" [ngModel] ="invoicedata.date | date:'yyyy-MM-dd'" (ngModelChange)="invoicedata.date = $event">
+        </div>
+    </div>
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="col-md-5 pr-1">
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" class="form-control" name="cname" placeholder="Company" [(ngModel)]="invoicedata.company_name">
+              </div>
+            </div>
+            <div class="col-md-3 px-1">
+              <div class="form-group">
+                <label>P.O Number</label>
+                <input type="text" class="form-control" placeholder="P.O Number"  [(ngModel)]="invoicedata.po_num">
+              </div>
+            </div>
+            <div class="col-md-4 pl-1">
+              <div class="form-group">
+                <label>GST IN</label>
+                <input type="text" class="form-control" placeholder="GST IN" name="gst" [(ngModel)]="invoicedata.gst" (keyup)="getStateCodePAN(invoicedata.gst)">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" placeholder="Address"  [(ngModel)]="invoicedata.address">
+              </div>
+            </div>
+            <div class="col-md-2 pr-1">
+                <div class="form-group">
+                  <label>PAN No.</label>
+                  <input type="text" class="form-control" placeholder="PAN" name="pan" [(ngModel)]="invoicedata.pan" readonly>
+                </div>
+              </div>
+            <div class="col-md-1 px-1">
+              <div class="form-group">
+                <label>State Code</label>
+                <input type="text" class="form-control" placeholder="Code" name="statecode" [(ngModel)]="invoicedata.stateCode" readonly>
+              </div>
+            </div>
+            <div class="col-md-3 pl-1">
+              <div class="form-group">
+                <label>State</label>
+                <input type="text" class="form-control" placeholder="State" name="state" [(ngModel)]="invoicedata.stateName" readonly>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Details of consignee</label>
+                  <input type="text" class="form-control" placeholder="Consignee"  [(ngModel)]="invoicedata.consignnee">
+                </div>
+              </div>
+
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label>Due Date</label>
+                  <input type="date" class="form-control" placeholder="Due Date"  [(ngModel)]="invoicedata.duedate">
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label>Contract No</label>
+                  <input type="text" class="form-control" placeholder="Contract No."  [(ngModel)]="invoicedata.contract_no">
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label>Date</label>
+                  <input type="date" class="form-control" placeholder="Date" [(ngModel)]="invoicedata.contract_date">
+                </div>
+              </div>
+            </div>
+
+          <div class="row">
+            <div class="ml-auto mr-auto">
+            <a href="" data-toggle="collapse" data-target="#extrainfo" style="text-decoration: none">Extra Infos</a>
+            <hr>
+            </div>
+          </div>
+          <div id="extrainfo" class="collapse">
+            <div class="row">
+              <div class="col-md-3 pr-1">
+                <div class="form-group">
+                  <label>Payment Terms</label>
+                  <input type="number" class="form-control" placeholder="Payment Term"  [(ngModel)]="invoicedata.terms">
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>Delivery Order No</label>
+                  <input type="text" class="form-control" placeholder="Delivery Order No."  [(ngModel)]="invoicedata.delivery_no">
+                </div>
+              </div>
+              <div class="col-md-3 pl-1">
+                <div class="form-group">
+                  <label>Transporter Name</label>
+                  <input type="text" class="form-control" placeholder="Transporter"  [(ngModel)]="invoicedata.transporter">
+                </div>
+              </div>
+              <div class="col-md-3 pl-1">
+                <div class="form-group">
+                  <label>Mode of Transport</label>
+                  <input type="text" class="form-control" placeholder="Mode of Transport"  [(ngModel)]="invoicedata.transport_mode"> 
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Vehicle No.</label>
+                  <input type="text" class="form-control" placeholder="Vehicle No." [(ngModel)]="invoicedata.vehicle_num">
+                </div>
+              </div>
+              <div class="col-md-2 px-1">
+                <div class="form-group">
+                  <label>LR No</label>
+                  <input type="text" class="form-control" placeholder="LR No." [(ngModel)]="invoicedata.lr" >
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label>Date</label>
+                  <input type="date" class="form-control" placeholder="Date"  [(ngModel)]="invoicedata.lr_date" >
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label>LC No</label>
+                  <input type="text" class="form-control" placeholder="LC No."  [(ngModel)]="invoicedata.lc" >
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label>Date</label>
+                  <input type="date" class="form-control" placeholder="Date"  [(ngModel)]="invoicedata.lc_date" >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+              <div class="card card-plain">
+                <div class="card-header">
+                  <h5 class="card-title">Item Particulars</h5>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive" style="overflow:hidden;">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th style="width:32%">
+                          Item Name
+                        </th>
+                        <th  style="width:8%">
+                          SAC
+                        </th>
+                        <th  style="width:8%">
+                          Qty.
+                        </th>
+                        <th  style="width:8%">
+                          UOM
+                        </th>
+                        <th  style="width:10%">
+                          Rate
+                        </th>
+                        <th  style="width:10%">
+                          Total
+                       </th>
+                        <th  style="width:7%">
+                          Disc %
+                        </th>
+                        <th class="text-right mr-2" >
+                          Taxable
+                        </th>
+
+                      </thead>
+                      <tbody>                          
+                          <tr *ngFor="let item of invoicedata.itemList">
+                              <td>
+                                <span [hidden]="item.editMode==true">{{item.name}}</span>
+                                <input type="text"  name="itemname" class="form-control" [hidden]="item.editMode==false" [(ngModel)]="item.name">
+                              </td>
+                              <td>
+                                  <span [hidden]="item.editMode==true">{{item.sac}}</span>
+                                  <input type="text" name="sac" class="form-control" [hidden]="item.editMode==false"  [(ngModel)]="item.sac" >
+                              </td>
+                              <td>
+                                  <span [hidden]="item.editMode==true">{{item.quantity}}</span>
+                                  <input type="number" name="quantity" class="form-control" [hidden]="item.editMode==false"  [(ngModel)]="item.quantity" >
+                              </td>
+                              <td>
+                                  <span [hidden]="item.editMode==true">{{item.uom}}</span>
+                                  <input type="text" name="uom" class="form-control" [hidden]="item.editMode==false"  [(ngModel)]="item.uom" >
+                              </td>
+                              <td>
+                                  <span [hidden]="item.editMode==true">{{item.rate}}</span>
+                                  <input type="number" name="rate" class="form-control" [hidden]="item.editMode==false"  [(ngModel)]="item.rate"  (keyup)="calculateTotal(item)">
+                              </td>
+                              <td>
+                                <span [hidden]="!(item.quantity && item.rate)">{{item.total}}</span>
+                            </td>
+                              <td>
+                                  <span [hidden]="item.editMode==true">{{item.discount}}</span>
+                                  <input type="text" name="discount" class="form-control" [hidden]="item.editMode==false"  [(ngModel)]="item.discount" (keyup)="calculateTaxable(item)" >
+                              </td>
+                              <td class="text-right">
+                                <span name="total"  [hidden]="!(item.quantity && item.rate && item.discount)" >{{item.taxable}}</span>
+                              </td>
+                              <td *ngIf="item.editMode==true">
+                                  <a  (click)="saveEntry(item)" class="nc pr-2 text-success"><i class="font-weight-bold nc-icon nc-check-2"></i></a>
+                                  <a  class="nc text-danger"><i class="font-weight-bold nc-icon nc-simple-remove"></i></a>
+                              </td>
+                              <td *ngIf="item.editMode==false">
+                                  <a (click)="item.editMode=true;"  class="nc pr-2"><i class="font-weight-bold nc-icon nc-tag-content"></i></a>
+                                  <a  (click)="deleteItem(item.uid)"  class="nc text-danger"><i class="font-weight-bold nc-icon nc-simple-delete"></i></a>
+                              </td>
+                            </tr> 
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <div>
+                      <a  (click)="addnewEntry()" class="nc text-success font-weight-bold "><i class="nc-icon nc-simple-add"></i>Add New Item</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button type="submit" (click)="previewPdf()"class="btn btn-primary btn-round">Proceed to Billing</button>
+              <button type="submit" class="btn btn-basic btn-round">Save Draft</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

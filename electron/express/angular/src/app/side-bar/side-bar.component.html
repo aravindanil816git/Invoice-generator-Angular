@@ -1,0 +1,49 @@
+<div class="sidebar" data-color="white" data-active-color="danger">
+    <!--
+      Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+  -->
+    <div class="logo">
+      <a href="" class="simple-text logo-mini">
+      </a>
+      <a href="" class="simple-text logo-normal">
+        TABS app
+        <!-- <div class="logo-image-big">
+          <img src="../assets/img/logo-big.png">
+        </div> -->
+      </a>
+    </div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li [ngClass]="{'active': activeClass=='dashboard'}">
+            <a routerLink="/dashboard" (click)="activeClass='dashboard'">
+            <i class="nc-icon nc-pin-3"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        <li [ngClass]="{'active': activeClass=='create'}">
+            <a routerLink="/create_invoice" (click)="activeClass='create'">
+            <i class="nc-icon nc-single-02"></i>
+            <p>Create Invoice</p>
+          </a>
+        </li>
+        <li [ngClass]="{'active': activeClass=='drafts'}">
+          <a routerLink="/drafts" (click)="activeClass='drafts'">
+            <i class="nc-icon nc-bell-55"></i>
+            <p>View Drafts</p>
+          </a>
+        </li>
+        <li [ngClass]="{'active': activeClass=='history'}">
+          <a routerLink="/history"  (click)="activeClass='history'">
+            <i class="nc-icon nc-tile-56"></i>
+            <p>View History</p>
+          </a>
+        </li>
+        <li [ngClass]="{'active': activeClass=='inventory'}">
+            <a routerLink="/inventory"  (click)="activeClass='inventory'">
+              <i class="nc-icon nc-tile-56"></i>
+              <p>View History</p>
+            </a>
+          </li>
+      </ul>
+    </div>
+  </div>
